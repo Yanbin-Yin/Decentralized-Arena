@@ -207,20 +207,20 @@ def run_openai_model(prompts, model_name, temperature=0.7, max_tokens=15):
     # Handle model selection for OpenAI models
     if "3.5-turbo-0125" in model_name:
         model_name = "gpt-3.5-turbo-0125"
-        client = OpenAI(api_key="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")
-        # client = OpenAI(api_key="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")
+        client = OpenAI(api_key="")
+        
     elif "gpt-4o-mini" in model_name:
         model_name = "gpt-4o-mini-2024-07-18"
-        client = OpenAI(api_key="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")
-        # client = OpenAI(api_key="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")
+        client = OpenAI(api_key="")
+
     elif "ChatGPT-4o-latest" in model_name:
         model_name = "chatgpt-4o-latest"
-        client = OpenAI(api_key="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")
-        # client = OpenAI(api_key="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")
+        client = OpenAI(api_key="")
+
     elif "gpt-4o-2024-08-06" in model_name:
         model_name = "gpt-4o-2024-08-06"
-        client = OpenAI(api_key="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")
-        # client = OpenAI(api_key="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")
+        client = OpenAI(api_key="")
+
 
     responses = []
     # Modify each prompt to ask the model to evaluate dataset quality
@@ -245,13 +245,13 @@ def run_openai_model(prompts, model_name, temperature=0.7, max_tokens=15):
 def run_gemini_model(prompts, model_name="gemini-1.5-flash", max_tokens=3):
     if model_name == "gemini-1.5-pro-001":
         model_name = "gemini-1.5-pro-001"
-        client = 'AIzaSyA9jyDcuDfYenDJa_fDr2o9s4eVIV3uiKc'
+        client = ''
     elif model_name == "gemini-1.0-pro-001":
         model_name = "gemini-1.0-pro-001"
-        client = "AIzaSyAvZ-vwodICIdA_1DBoOGlHtD5Lu2tK6i0"
+        client = ""
     elif model_name == "gemini-1.5-flash-001":
         model_name = "gemini-1.5-flash-001"
-        client = "AIzaSyCN5zFJ281TsD6dO58724UF3UWBtgBsklo"
+        client = ""
 
     responses = []
     genai.configure(api_key=client)
