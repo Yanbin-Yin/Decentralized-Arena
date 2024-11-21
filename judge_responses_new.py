@@ -465,26 +465,10 @@ def run_judging_trials(path="mt_bench_questions.jsonl",model_name="command-r-v01
             pair = tuple(sorted([record['response_A'], record['response_B']]))
             existing_model_pairs.add(pair)
         if judge_model == "OPENAI":
-            #client = OpenAI(api_key="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")
-            client = OpenAI(api_key="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")
+            client = OpenAI(api_key="")
         if judge_model == "Anthropic":
-            #api_key = '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' # zhen
-            #api_key = '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' # Yi GU
-            api_key = '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'
-            #api_key = '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'
             client = anthropic.Anthropic(api_key=api_key)
         if judge_model == "gemini":
-            #api_key = 'AIzaSyA9jyDcuDfYenDJa_fDr2o9s4eVIV3uiKc'
-            api_key = "AIzaSyAvZ-vwodICIdA_1DBoOGlHtD5Lu2tK6i0"
-            #api_key = "AIzaSyCN5zFJ281TsD6dO58724UF3UWBtgBsklo"
-            #api_key = 'AIzaSyAe1z0MlTb6rHO3pg2Q-8yrfdBIJnixZz8'
-            #api_key = "AIzaSyAy9p5_9YiT5CKIzYdCzQyxpOiauAVDfuA"
-            #api_key = "AIzaSyCylXzBAX1KVzfj2OAHIxOkzsDYRj5GT6I"
-            #api_key = "AIzaSyAuLfVy3fVod_TsKQt9v-5KcV8ykvV87v0"
-            #api_key = "AIzaSyDphWcnibB_tdpuOZFYSV9vRcKS3wh-oDQ"
-            #api_key = 'AIzaSyB2rqsoj8-Xc4ZIT1IWaDzUPMy3nBX1q-A'
-            #api_key = "AIzaSyAHWhV-0hm2Qgb5bA-N3elhTkOZfimkLJs"
-            
             client = api_key
         NUMBER=len(combination_models)
         SCALE=int(NUMBER/3)
