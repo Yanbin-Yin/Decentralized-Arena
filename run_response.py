@@ -529,7 +529,7 @@ def run_mistral_model(prompts, client, model_name="mistral-medium", max_tokens=2
 
 def run_yi_model(prompts, model_name, temperature=0.7, max_tokens=2048):
     API_BASE = "https://api.lingyiwanwu.com/v1"
-    API_KEY = "f5144a6c27a64e19afd4ba237f3d30a0"
+    API_KEY = ""
     client = OpenAI(
     api_key=API_KEY,
     base_url=API_BASE
@@ -555,7 +555,7 @@ def run_yi_model(prompts, model_name, temperature=0.7, max_tokens=2048):
 
 def run_glm_model(prompts, model_name, temperature=0.7, max_tokens=2048):
     responses = []
-    client = ZhipuAI(api_key="8acc871f6ddbbfe5a34f1db0f870757c.StwghavlcbfF2CNF") # 填写您自己的APIKey
+    client = ZhipuAI(api_key="") 
     # Modify each prompt to ask the model to evaluate dataset quality
     for prompt in prompts:
         # Call OpenAI API with the modified quality evaluation prompt
@@ -660,8 +660,7 @@ def run_all_models(output_dir="/data/shared/yanbin/science_biology_v1_final_sele
         print(f"Processing model: {model_name}")
         if "gpt" in model_name.lower() or "o1-" in model_name.lower():
             num_batches = (len(prompts) + batch_size - 1) // batch_size
-            client = OpenAI(api_key="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")
-            #client = OpenAI(api_key="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")
+            client = OpenAI(api_key="")
             for i in range(num_batches):
                 batch_prompts = prompts[i * batch_size : (i + 1) * batch_size]
                 batch_question_ids = question_ids[i * batch_size : (i + 1) * batch_size]
@@ -670,8 +669,7 @@ def run_all_models(output_dir="/data/shared/yanbin/science_biology_v1_final_sele
                 save_responses(responses, model_name, output_dir, list(range(len(batch_prompts))), batch_prompts, batch_question_ids, False)
         elif "claude" in model_name.lower():
             num_batches = (len(prompts) + batch_size - 1) // batch_size
-            api_key = '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'
-            #api_key = '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'
+            api_key = ''
             client = anthropic.Anthropic(api_key=api_key)
             for i in range(num_batches):
                 batch_prompts = prompts[i * batch_size : (i + 1) * batch_size]
@@ -683,7 +681,7 @@ def run_all_models(output_dir="/data/shared/yanbin/science_biology_v1_final_sele
                 save_responses(responses, model_name, output_dir, list(range(len(batch_prompts))), batch_prompts, batch_question_ids, False)  
         elif "mistral" in model_name.lower():
             num_batches = (len(prompts) + batch_size - 1) // batch_size
-            api_key = 'jbHSFrIqjjTjrYXGfN94V2dfhTIwI1Ur'
+            api_key = ''
             client = Mistral(api_key=api_key)
             for i in range(num_batches):
                 batch_prompts = prompts[i * batch_size : (i + 1) * batch_size]
@@ -696,9 +694,7 @@ def run_all_models(output_dir="/data/shared/yanbin/science_biology_v1_final_sele
         elif "gemini" in model_name.lower():
             # Fill in for Claude
             num_batches = (len(prompts) + batch_size - 1) // batch_size
-            api_key = 'AIzaSyA9jyDcuDfYenDJa_fDr2o9s4eVIV3uiKc'
-            # api_key = "AIzaSyAvZ-vwodICIdA_1DBoOGlHtD5Lu2tK6i0"
-            # api_key = "AIzaSyCN5zFJ281TsD6dO58724UF3UWBtgBsklo"
+            api_key = ''
             client = api_key
             for i in range(num_batches):
                 batch_prompts = prompts[i * batch_size : (i + 1) * batch_size]
